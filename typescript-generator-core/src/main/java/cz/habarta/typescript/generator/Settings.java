@@ -68,6 +68,7 @@ public class Settings {
     public boolean displaySerializerWarning = true;
     public boolean disableJackson2ModuleDiscovery = false;
     public ClassLoader classLoader = null;
+    public String customFileComment = null;
 
     private boolean defaultStringEnumsOverriddenByExtension = false;
 

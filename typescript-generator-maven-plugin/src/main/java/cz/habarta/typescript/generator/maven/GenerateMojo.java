@@ -406,6 +406,13 @@ public class GenerateMojo extends AbstractMojo {
 
     @Parameter(defaultValue = "${project.build.directory}", readonly = true, required = true)
     private String projectBuildDirectory;
+    
+    /**
+     * Only applicable if 'noFileComment' is 'false'.
+     * If not null or empty, replaces default comment in generated TS file.
+     */ 
+    @Parameter
+    private String customFileComment;
 
     @Override
     public void execute() {
@@ -468,6 +475,7 @@ public class GenerateMojo extends AbstractMojo {
             settings.displaySerializerWarning = displaySerializerWarning;
             settings.disableJackson2ModuleDiscovery = disableJackson2ModuleDiscovery;
             settings.classLoader = classLoader;
+            settings.customFileComment = customFileComment;
             final File output = outputFile != null
                     ? outputFile
                     : new File(new File(projectBuildDirectory, "typescript-generator"), project.getArtifactId() + settings.getExtension());

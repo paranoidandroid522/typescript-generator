@@ -62,6 +62,7 @@ public class GenerateTask extends DefaultTask {
     public StringQuotes stringQuotes;
     public boolean displaySerializerWarning = true;
     public boolean disableJackson2ModuleDiscovery;
+    public String customFileCommentTemplate;
 
     @TaskAction
     public void generate() throws Exception {
@@ -135,6 +136,8 @@ public class GenerateTask extends DefaultTask {
         settings.displaySerializerWarning = displaySerializerWarning;
         settings.disableJackson2ModuleDiscovery = disableJackson2ModuleDiscovery;
         settings.classLoader = classLoader;
+        settings.customFileCommentTemplate = customFileCommentTemplate;
+        
         final File output = outputFile != null
                 ? getProject().file(outputFile)
                 : new File(new File(getProject().getBuildDir(), "typescript-generator"), getProject().getName() + settings.getExtension());

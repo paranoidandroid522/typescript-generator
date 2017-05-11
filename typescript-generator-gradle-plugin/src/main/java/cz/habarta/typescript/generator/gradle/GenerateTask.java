@@ -62,7 +62,7 @@ public class GenerateTask extends DefaultTask {
     public StringQuotes stringQuotes;
     public boolean displaySerializerWarning = true;
     public boolean disableJackson2ModuleDiscovery;
-    public String customFileCommentTemplate;
+    public String customFileComment;
 
     @TaskAction
     public void generate() throws Exception {
@@ -136,7 +136,7 @@ public class GenerateTask extends DefaultTask {
         settings.displaySerializerWarning = displaySerializerWarning;
         settings.disableJackson2ModuleDiscovery = disableJackson2ModuleDiscovery;
         settings.classLoader = classLoader;
-        settings.customFileCommentTemplate = customFileCommentTemplate;
+        settings.customFileComment = customFileComment;
         
         final File output = outputFile != null
                 ? getProject().file(outputFile)
